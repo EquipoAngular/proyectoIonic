@@ -14,10 +14,10 @@
 1. Bajar Node.js desde https://nodejs.org/es/
 2. Plataformas
     + Windows
-        `npm install -g @ionic/cli`
+        - `npm install -g @ionic/cli`
     + Mac
-        `sudo npm install -g @ionic/cli`
-        `sudo gem install cocoapods`
+        - `sudo npm install -g @ionic/cli`
+        - `sudo gem install cocoapods`
         
 ## Iniciar el proyecto
 1. Comandos
