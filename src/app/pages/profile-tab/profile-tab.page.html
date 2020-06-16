@@ -1,0 +1,85 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Profile</ion-title>
+        <ion-buttons slot="start">
+            <ion-button>
+                <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+
+        <ion-card-content>
+
+            <form [formGroup]="form" method="post">
+                <ion-item>
+                    <ion-label position="stacked">Name(s)</ion-label>
+                    <ion-input formControlName="name" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked">Last name</ion-label>
+                    <ion-input formControlName="lastName" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked">Second last name</ion-label>
+                    <ion-input formControlName="secondLastName" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input formControlName="email" type="email"></ion-input>
+                </ion-item>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label position="stacked">Birth Date</ion-label>
+                            <ion-datetime formControlName="birthDate" displayFormat="DD/MM/YYYY" placeholder="Select Date"></ion-datetime>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label position="stacked">Genre</ion-label>
+                            <ion-select formControlName="genre" interface="popover">
+                                <ion-select-option value="1">Male</ion-select-option>
+                                <ion-select-option value="2">Female</ion-select-option>
+                                <ion-select-option value="3">Other</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-item>
+                    <ion-label position="stacked">Phone</ion-label>
+                    <ion-input formControlName="phoneNumber" type="tel"></ion-input>
+                </ion-item>
+
+            </form>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>
+<ion-footer class="ion-no-border">
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="onSubmit()" expand="block" fill="outline" color="primary">Save</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="reset()" expand="block" fill="outline" color="warning">Reset</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>
