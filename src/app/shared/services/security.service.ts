@@ -19,7 +19,6 @@ export class SecurityService {
   async SetAuthorizationData(token: any) {
     await this.secureStorage.storeAsync(this.TOKEN_KEY, token);
     this.IsAuthorized = true;
-
     this.authenticationSource.next(true);
   }
 

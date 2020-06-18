@@ -45,7 +45,6 @@ export class LoginPage implements OnInit {
     await loadingSpinner.present();
 
     try {
-
       // Ejecuta el login
       const resp = await this.loginDataService.Login(this.loginForm.value);
 
@@ -54,12 +53,11 @@ export class LoginPage implements OnInit {
         return;
       }
 
-      await this.securityService.SetAuthorizationData(resp.result.token);
       await loadingSpinner.dismiss();
-
       this.toastService.showSuccess('Bienvenido!');
 
-      await loadingSpinner.dismiss();
+      await this.securityService.SetAuthorizationData(resp.result.token);
+
     } catch (error) {
       await loadingSpinner.dismiss();
       await this.alertService.show('Login', MESSAGE_GENERIC_ERROR, MsgType.ERROR);

@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    urlApiAuth: 'https://10.0.0.4:45459/api/',
-    urlApiUsers: 'https://10.0.0.4:45459/api/'
+    urlApiAuth: 'http://10.0.0.4:45456/api/',
+    urlApiUsers: 'http://10.0.0.4:45456/api/'
 };
