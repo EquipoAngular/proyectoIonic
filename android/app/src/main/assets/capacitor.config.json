@@ -1,13 +1,18 @@
 {
-  "appId": "com.grupoangular.app",
-  "appName": "com.grupoangular.app",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
-  "cordova": {}
+    "appId": "com.grupoangular.app",
+    "appName": "com.grupoangular.app",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 0
+        }
+    },
+    "server": {
+        "allowNavigation": [
+            "http://10.0.0.4:4200/register"
+        ]
+    },
+    "cordova": {}
 }
