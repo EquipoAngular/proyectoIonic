@@ -5,8 +5,8 @@ import { MESSAGES_WAIT, MESSAGE_GENERIC_ERROR, MsgType } from 'src/app/core/mode
 import { SecurityService } from 'src/app/shared/services/security.service';
 import { LoginDataService } from './login-data.service';
 import { AlertService } from 'src/app/core/helpers/alert.service';
-import { Router } from '@angular/router';
 import { ToastService } from 'src/app/core/helpers/toast.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
     private loginDataService: LoginDataService,
     private alertService: AlertService,
     private toastService: ToastService,
-    private route: Router
+    private iab: InAppBrowser
   ) {
 
     this.loginForm = this.formBuilder.group({
@@ -65,8 +65,37 @@ export class LoginPage implements OnInit {
   }
 
   signup() {
+    const browser = this.iab.create('http://10.0.0.4:4200/register', '_blank',
+      {
+        location: 'yes',
+        hidenavigationbuttons: 'yes',
+        hideurlbar: 'yes'
+      });
 
+    browser.on('loadstop').subscribe((event) => {
+      let elapsed = 0;
+      console.log('** loadstop event', event);
+      const loop = window.setInterval(() => {
+        elapsed += 200;
+        browser.executeScript({ code: 'window.popupStatus' })
+          .then((values) => {
+            console.log('** executeScript values', values);
+            if (values[0] === 'closed' || values[0] === null) {
+              browser.close();
+              window.clearInterval(loop);
+              this.toastService.showSuccess('El usuario se registro correctamente');
+            }
+            // else if ((values[0] !== 'loaded') && (elapsed > 2000)) {
+            //   browser.close();
+            //   window.clearInterval(loop);
+            // }
+          });
+      }, 350);
+    });
+
+    browser.show();
   }
+
 
   get emailNoValid() {
     return this.loginForm.get('email').touched && this.loginForm.get('email').invalid;
