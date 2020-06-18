@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <form [formGroup]="loginForm" method="post">
+                <ion-item>
+                    <ion-label position="stacked">Usuario</ion-label>
+                    <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked">Contraseña</ion-label>
+                    <ion-icon slot="end" [name]="hide ? 'eye-off' : 'eye'" (click)="hide = !hide"></ion-icon>
+                    <ion-input [type]="hide ? 'password' : 'text'" formControlName="password"></ion-input>
+                </ion-item>
+            </form>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>
+<ion-footer class="ion-no-border">
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="login()" expand="block" fill="outline" color="primary">Login</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="signup()" expand="block" fill="outline" color="secondary">Registrarse</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>
