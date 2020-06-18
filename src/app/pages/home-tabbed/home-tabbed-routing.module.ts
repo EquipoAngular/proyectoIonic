@@ -4,7 +4,7 @@ import { HomeTabbedPage } from './home-tabbed.page';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeTabbedPage,
     children: [
       {
