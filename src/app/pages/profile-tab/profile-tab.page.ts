@@ -23,7 +23,7 @@ export class ProfileTabPage implements OnInit {
     pwd: '123456',
   };
 
-  constructor( private fb: FormBuilder ) {
+  constructor(private fb: FormBuilder) {
     this.loadForm();
   }
 
@@ -31,26 +31,24 @@ export class ProfileTabPage implements OnInit {
   }
 
   onSubmit() {
-
-    console.log( this.form.value );
-
+    console.log(this.form.value);
   }
 
   reset() {
-    console.log( this.form.controls.genre.value );
+    console.log(this.form.controls.genre.value);
   }
 
   loadForm() {
     this.form = this.fb.group({
-      id: [ this.user.id, [ Validators.required ] ],
-      name: [ this.user.name, [ Validators.required ] ],
-      lastName: [ this.user.lastName, [ Validators.required ] ],
-      secondLastName: [ this.user.secondLastName, [ Validators.required ] ],
+      id: [this.user.id, [Validators.required]],
+      name: [this.user.name, [Validators.required]],
+      lastName: [this.user.lastName, [Validators.required]],
+      secondLastName: [this.user.secondLastName, [Validators.required]],
       email: [this.user.email, [Validators.required, Validators.pattern('[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+')]],
-      birthDate: [ this.user.birthDate, [ Validators.required ] ],
-      phoneNumber: [ this.user.phoneNumber, [ Validators.required ] ],
-      genre: [ this.user.genre.toString(), [ Validators.required ] ],
-      pwd: [ this.user.pwd, [ Validators.required ] ],
+      birthDate: [this.user.birthDate, [Validators.required]],
+      phoneNumber: [this.user.phoneNumber, [Validators.required]],
+      genre: [this.user.genre.toString(), [Validators.required]],
+      pwd: [this.user.pwd, [Validators.required]],
     });
   }
 
