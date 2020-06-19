@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { SecurityService } from '../services/security.service';
 
 @Injectable()
@@ -16,7 +16,11 @@ export class JwtTokenInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.securityService.GetToken();
+    return from(this.handleAccess(request, next));
+  }
+
+  private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
+    const token = await this.securityService.GetToken();
 
     if (token) {
       // clone: https://angular.io/guide/http#immutability
@@ -28,6 +32,6 @@ export class JwtTokenInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request);
+    return next.handle(request).toPromise();
   }
 }
