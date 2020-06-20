@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Storage, IonicStorageModule } from '@ionic/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -35,6 +35,7 @@ export function jwtOptionsFactory(storage) {
     AppRoutingModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
+    IonicStorageModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     }),

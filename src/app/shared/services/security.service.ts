@@ -32,10 +32,11 @@ export class SecurityService {
   async GetUserData(): Promise<UserDto> {
     const token = await this.GetToken();
     const tokenDecode = this.jwtJelper.decodeToken(token);
+    console.log('tokenDecode', tokenDecode);
 
     const userData: UserDto = {} as any;
-    userData.email = tokenDecode.email;
-    userData.id = tokenDecode.userId;
+    userData.email = tokenDecode.Email;
+    userData.id = tokenDecode.UserId;
 
     return userData;
   }

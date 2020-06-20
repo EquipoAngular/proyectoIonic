@@ -4,6 +4,7 @@ import { UrlService } from 'src/app/core/helpers/url.service';
 import { ApiResponse } from 'src/app/core/models/api-response';
 import { UserDto } from 'src/app/core/models/user-dto.model';
 import { ApiRequest } from 'src/app/core/models/api-request';
+import { UserResponse } from 'src/app/core/models/user-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,24 @@ export class ProfileDataService {
     private urlService: UrlService
   ) { }
 
-  async getByEmail(email: string) {
+  async getByEmail(email: string): Promise<UserDto> {
     const url = this.urlService.composeUrlUsers('users/get/' + email);
 
-    const response = await this.dataService.get<ApiResponse<UserDto>>(url).toPromise();
+    const response = await this.dataService.get<ApiResponse<UserResponse>>(url).toPromise();
 
-    return response;
+    const userDto: UserDto = {
+      id: response.result.id,
+      name: response.result.name,
+      lastName: response.result.lastName,
+      secondLastName: response.result.secondLastName,
+      email: response.result.email,
+      birthDate: response.result.birthDate,
+      phoneNumber: response.result.phoneNumber,
+      genre: response.result.genre,
+      pwd: ''
+    };
+
+    return userDto;
   }
 
   async put(id: number, user: UserDto) {

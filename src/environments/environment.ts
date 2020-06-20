@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  urlApiAuth: 'https://localhost:15000/api/',
-  urlApiUsers: 'https://localhost:15001/api/',
+  urlApiAuth: 'http://localhost:5000/api/',
+  urlApiUsers: 'http://localhost:5000/api/',
   whitelistedDomains: ['localhost:5000', 'http://10.0.0.4:45455']
 };
 
