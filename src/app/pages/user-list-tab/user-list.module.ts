@@ -6,13 +6,15 @@ import { FormsModule } from '@angular/forms';
 
 import { UserListTabPage } from './user-list.page';
 import { UserListTabPageRoutingModule } from './user-list-routing.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    UserListTabPageRoutingModule
+    UserListTabPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [UserListTabPage]
 })
