@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/core/models/user-dto.model';
+import { ProfileDataService } from './profile-data.service';
+import { SecurityService } from 'src/app/shared/services/security.service';
+import { MsgType, MESSAGE_GENERIC_ERROR, MESSAGES_WAIT } from 'src/app/core/models/consts';
+import { AlertService } from 'src/app/core/helpers/alert.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile-tab',
@@ -8,26 +13,38 @@ import { UserDto } from 'src/app/core/models/user-dto.model';
   styleUrls: ['./profile-tab.page.scss'],
 })
 export class ProfileTabPage implements OnInit {
-
   form: FormGroup;
+  user: UserDto;
 
-  user: UserDto = {
-    id: 1,
-    name: 'Cesar',
-    lastName: 'Riojas',
-    secondLastName: 'Martinez',
-    email: 'riojas@riojas.com',
-    birthDate: '01/08/1984',
-    phoneNumber: '8448806948',
-    genre: 1,
-    pwd: '123456',
-  };
-
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private profileDataService: ProfileDataService,
+    private securityService: SecurityService,
+    private alertService: AlertService,
+    private loadingController: LoadingController) {
     this.loadForm();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const loadingSpinner = await this.loadingController.create({
+      message: MESSAGES_WAIT
+    });
+
+    await loadingSpinner.present();
+
+    try {
+
+      const userData = await this.securityService.GetUserData();
+
+      const userProfile = await this.profileDataService.getByEmail(userData.email);
+
+      this.form.patchValue({ userProfile });
+
+      await loadingSpinner.dismiss();
+    } catch (error) {
+      await loadingSpinner.dismiss();
+      await this.alertService.show('Perfil', MESSAGE_GENERIC_ERROR, MsgType.ERROR);
+    }
   }
 
   onSubmit() {

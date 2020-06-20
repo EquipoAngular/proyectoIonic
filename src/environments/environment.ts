@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   urlApiAuth: 'https://localhost:15000/api/',
-  urlApiUsers: 'https://localhost:15001/api/'
+  urlApiUsers: 'https://localhost:15001/api/',
+  whitelistedDomains: ['localhost:5000', 'http://10.0.0.4:45455']
 };
 
 /*

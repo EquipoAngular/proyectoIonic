@@ -12,6 +12,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenInterceptor } from './shared/interceptors/jwt-token.interceptor';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
+import { TOKEN_KEY } from './core/models/consts';
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get(TOKEN_KEY);
+    },
+    whitelistedDomains: environment.whitelistedDomains
+  };
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +37,13 @@ import { ToastrModule } from 'ngx-toastr';
     SweetAlert2Module.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
+    }),
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [Storage],
+      }
     })
   ],
   providers: [
