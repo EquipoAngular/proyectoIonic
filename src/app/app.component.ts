@@ -29,7 +29,7 @@ export class AppComponent {
       // Captura el evento de autenticacion
       this.securityService.authenticationChallenge$.subscribe(async (state) => {
         if (state) {
-          this.navCtrl.navigateRoot('/home');
+          this.navCtrl.navigateRoot('/home/user-list-tab');
         } else {
           this.navCtrl.navigateRoot('');
         }
