@@ -5,7 +5,7 @@ export enum MsgType {
     INFO = 'info',
     QUESTION = 'question'
 }
-
+export const TOKEN_KEY = 'token';
 export const SERVICES_RETRY = 3;
 export const SERVICES_TIMEOUT = 15000;
 

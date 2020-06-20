@@ -18,7 +18,7 @@
 
                 <ion-item>
                     <ion-label position="stacked">Correo electr&oacute;nico</ion-label>
-                    <ion-input formControlName="email" type="email"></ion-input>
+                    <ion-input readonly formControlName="email" type="email"></ion-input>
                 </ion-item>
 
                 <ion-row>
@@ -32,9 +32,9 @@
                         <ion-item>
                             <ion-label position="stacked">Género</ion-label>
                             <ion-select formControlName="genre" interface="popover">
-                                <ion-select-option value="1">Masculino</ion-select-option>
-                                <ion-select-option value="2">Femenino</ion-select-option>
-                                <ion-select-option value="3">Otro</ion-select-option>
+                                <ion-select-option [value]="1">Masculino</ion-select-option>
+                                <ion-select-option [value]="2">Femenino</ion-select-option>
+                                <ion-select-option [value]="3">Otro</ion-select-option>
                             </ion-select>
                         </ion-item>
                     </ion-col>
