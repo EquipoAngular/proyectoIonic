@@ -38,9 +38,9 @@ export class ProfileTabPage implements OnInit {
       const userProfile = await this.profileDataService.getByEmail(userData.email);
       console.log('userProfile', userProfile);
       userProfile.birthDate = userProfile.birthDate.substring(0, 10);
-      //userProfile.genre 
+
       this.form.patchValue(userProfile);
-      
+
       await loadingSpinner.dismiss();
     } catch (error) {
       await loadingSpinner.dismiss();
