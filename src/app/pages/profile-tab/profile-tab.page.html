@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header title="Perfil"></app-header>
 
 <ion-content padding>
     <ion-card>
@@ -7,39 +7,34 @@
 
             <form [formGroup]="form" method="post">
                 <ion-item>
-                    <ion-label position="stacked">Name(s)</ion-label>
+                    <ion-label position="stacked">Nombre</ion-label>
                     <ion-input formControlName="name" type="text"></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-label position="stacked">Last name</ion-label>
+                    <ion-label position="stacked">Apellido</ion-label>
                     <ion-input formControlName="lastName" type="text"></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-label position="stacked">Second last name</ion-label>
-                    <ion-input formControlName="secondLastName" type="text"></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label position="stacked">Email</ion-label>
+                    <ion-label position="stacked">Correo electr&oacute;nico</ion-label>
                     <ion-input formControlName="email" type="email"></ion-input>
                 </ion-item>
 
                 <ion-row>
                     <ion-col>
                         <ion-item>
-                            <ion-label position="stacked">Birth Date</ion-label>
+                            <ion-label position="stacked">Fecha de nacimiento</ion-label>
                             <ion-datetime formControlName="birthDate" displayFormat="DD/MM/YYYY" placeholder="Select Date"></ion-datetime>
                         </ion-item>
                     </ion-col>
                     <ion-col>
                         <ion-item>
-                            <ion-label position="stacked">Genre</ion-label>
+                            <ion-label position="stacked">Género</ion-label>
                             <ion-select formControlName="genre" interface="popover">
-                                <ion-select-option value="1">Male</ion-select-option>
-                                <ion-select-option value="2">Female</ion-select-option>
-                                <ion-select-option value="3">Other</ion-select-option>
+                                <ion-select-option value="1">Masculino</ion-select-option>
+                                <ion-select-option value="2">Femenino</ion-select-option>
+                                <ion-select-option value="3">Otro</ion-select-option>
                             </ion-select>
                         </ion-item>
                     </ion-col>
@@ -47,7 +42,7 @@
 
 
                 <ion-item>
-                    <ion-label position="stacked">Phone</ion-label>
+                    <ion-label position="stacked">N&uacute;mero de tel&eacute;fono</ion-label>
                     <ion-input formControlName="phoneNumber" type="tel"></ion-input>
                 </ion-item>
 
@@ -61,10 +56,10 @@
     <ion-toolbar>
         <ion-row>
             <ion-col>
-                <ion-button (click)="onSubmit()" expand="block" fill="outline" color="primary">Save</ion-button>
+                <ion-button (click)="onSubmit()" expand="block" fill="outline" color="primary">Guardar</ion-button>
             </ion-col>
             <ion-col>
-                <ion-button (click)="reset()" expand="block" fill="outline" color="warning">Reset</ion-button>
+                <ion-button (click)="reset()" expand="block" fill="outline" color="warning">Restablecer</ion-button>
             </ion-col>
         </ion-row>
     </ion-toolbar>
